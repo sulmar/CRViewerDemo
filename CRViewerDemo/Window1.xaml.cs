@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,24 @@ namespace CRViewerDemo
         {
             InitializeComponent();
             reportViewer.Owner = this;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Crystal Reports (*.rpt)|*.rpt|All files (*.*)|*.*";
+
+            var result = openFileDialog.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                var rpt = new ReportDocument();
+                rpt.Load(openFileDialog.FileName);
+
+                reportViewer.ViewerCore.ReportSource = rpt;
+                
+            }
+                
         }
     }
 }

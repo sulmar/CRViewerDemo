@@ -4,6 +4,11 @@
         xmlns:cr="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
         Title="WPF Crystal Report Viewer" Height="600" Width="800">
     <Grid>
-        <cr:CrystalReportsViewer Name="reportViewer"/>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" >
+                <Button Content="Load..." Width="100" Margin="10" Click="Button_Click" />
+            </StackPanel>
+             <cr:CrystalReportsViewer Name="reportViewer"/>
+        </DockPanel>
     </Grid>
 </Window>
